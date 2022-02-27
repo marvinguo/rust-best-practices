@@ -28,4 +28,8 @@ fn main() {
       -------------------------------
         heap   Test(2)
     */
+
+    // box can allocate 0 size
+    let test3 = Box::new(());
 }
+
