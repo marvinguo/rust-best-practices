@@ -1,7 +1,19 @@
+use std::result::Result;
 
+type MyResult = Result<(), ()>;
+
+trait MapToResult {
+    fn test(self) -> i32;
+}
+
+impl MapToResult for () {
+    fn test(self) -> i32 {
+        123
+    }
+}
 
 fn main() {
-    let a = 10;
-    // the check_add returns Option comparing to +
-    let b = a.checked_add(100).unwrap();
+    let r = MyResult::Ok(());
+    let m = r.map(MapToResult::test);
+    println!("{:?}", m.unwrap());
 }
